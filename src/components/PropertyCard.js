@@ -1,10 +1,10 @@
 import React from 'react';
-import './PropertyCard.css'; // Crearemos este archivo para los estilos
+import './PropertyCard.css';
 
 function PropertyCard({ property }) {
   return (
     <div className="property-card">
-      <img src={property.imageUrl} alt={property.title} />
+      {/* Hemos eliminado la etiqueta <img> */}
       <div className="card-content">
         <h3>{property.title}</h3>
         <p><strong>Ubicación:</strong> {property.location}</p>

@@ -70,3 +70,17 @@ body {
   border-radius: 12px;
   font-size: 12px;
 }
+
+/* App.css */
+.delete-button {
+  background-color: #e74c3c;
+  color: white;
+  border: none;
+  padding: 8px 12px;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.delete-button:hover {
+  background-color: #c0392b;
+}
