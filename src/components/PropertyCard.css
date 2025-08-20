@@ -30,3 +30,8 @@
   margin-top: 0;
   color: #333;
 }
+
+.property-card-link {
+  text-decoration: none; /* Quita el subrayado del enlace */
+  color: inherit; /* Hereda el color del texto normal */
+}

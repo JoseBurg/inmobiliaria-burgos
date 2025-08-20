@@ -84,3 +84,22 @@ body {
 .delete-button:hover {
   background-color: #c0392b;
 }
+
+/* Agrega esto a tu archivo App.css */
+
+.title-container {
+  display: flex; /* Activa Flexbox */
+  justify-content: center; /* Centra el contenido horizontalmente */
+  align-items: center; /* Alinea verticalmente el icono con el texto */
+  gap: 15px; /* Crea un espacio entre el icono y el título */
+  color: #2c3e50; /* Un color oscuro para el texto y el icono */
+}
+
+.title-container .fa-house {
+  font-size: 2rem; /* ajusta el tamaño del icono (puedes cambiarlo) */
+}
+
+/* Puedes ajustar el estilo del título si es necesario */
+.main-title {
+  margin: 0; /* Quitamos el margen por defecto del h1 para un mejor alineamiento */
+}

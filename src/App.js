@@ -1,11 +1,11 @@
 import React, { useState, useEffect } from 'react';
 import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
-// Importaciones solo de Firestore
 import { collection, addDoc, getDocs, query, orderBy, doc, updateDoc, deleteDoc } from "firebase/firestore";
-import { db } from './firebaseConfig'; // Ya no importamos 'storage'
+import { db } from './firebaseConfig'; 
 
 import PropertyCard from './components/PropertyCard';
 import AddPropertyForm from './components/AddPropertyForm';
+import PropertyDetailPage from './components/PropertyDetailPage'; 
 import './App.css';
 
 // ----- DEFINICIÓN DE PÁGINAS O VISTAS -----
@@ -13,7 +13,11 @@ import './App.css';
 function HomePage({ properties }) {
   return (
     <div>
-      <h1 className="main-title">Propiedades Disponibles</h1>
+      <div className="title-container">
+        <i className="fa-solid fa-house"></i>
+        <h1 className="main-title">Propiedades Disponibles</h1>
+      </div>
+
       <div className="property-list">
         {properties.map(prop => (
           <PropertyCard key={prop.id} property={prop} />
@@ -28,7 +32,7 @@ function AdminPage({ properties, onAddProperty, onStatusChange, onDeleteProperty
     <div>
       <AddPropertyForm onAddProperty={onAddProperty} />
       <div className="admin-dashboard">
-        <h2>Panel de Administración de Propiedades</h2>
+        <h2>Administración de Propiedades</h2>
         <table>
           <thead>
             <tr>
@@ -55,7 +59,7 @@ function AdminPage({ properties, onAddProperty, onStatusChange, onDeleteProperty
                 <td>
                   <button 
                     className="delete-button" 
-                    onClick={() => onDeleteProperty(prop.id)} // Ya no pasamos imageUrl
+                    onClick={() => onDeleteProperty(prop.id)}
                   >
                     Eliminar
                   </button>
@@ -90,7 +94,6 @@ function App() {
     getProperties();
   }, []);
 
-  // ---- FUNCIÓN addProperty SIMPLIFICADA ----
   const addProperty = async (formData) => {
     try {
       const propertyData = {
@@ -98,8 +101,9 @@ function App() {
         status: 'Disponible',
         createdAt: new Date()
       };
+      // 👇 LÍNEA CORREGIDA 👇
       await addDoc(propertiesCollectionRef, propertyData);
-      getProperties(); // Recargamos para ver el nuevo registro
+      getProperties(); 
     } catch (error) {
       console.error("Error al agregar la propiedad:", error);
       alert("No se pudo guardar el registro. Revisa la consola para ver el error.");
@@ -116,13 +120,11 @@ function App() {
     }
   };
 
-  // ---- FUNCIÓN handleDeleteProperty SIMPLIFICADA ----
   const handleDeleteProperty = async (id) => {
     const confirmDelete = window.confirm("¿Estás seguro de que quieres eliminar esta propiedad?");
     if (!confirmDelete) return;
 
     try {
-      // Ya no hay que borrar imagen de Storage
       const propertyDoc = doc(db, "properties", id);
       await deleteDoc(propertyDoc);
       setProperties(properties.filter((prop) => prop.id !== id));
@@ -144,6 +146,7 @@ function App() {
         <div className="container">
           <Routes>
             <Route path="/" element={<HomePage properties={properties} />} />
+            <Route path="/propiedad/:id" element={<PropertyDetailPage />} />
             <Route 
               path="/admin" 
               element={
