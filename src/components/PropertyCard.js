@@ -9,6 +9,7 @@ function PropertyCard({ property }) {
         <h3>{property.title}</h3>
         <p><strong>Ubicación:</strong> {property.location}</p>
         <p><strong>Precio:</strong> ${property.price.toLocaleString()}</p>
+        <p><strong>Metros:</strong> {property.area} </p>
         <p><strong>Habitaciones:</strong> {property.rooms}</p>
       </div>
     </div>

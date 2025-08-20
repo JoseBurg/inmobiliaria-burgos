@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { HashRouter as Router, Routes, Route, Link } from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
 // Importaciones solo de Firestore
 import { collection, addDoc, getDocs, query, orderBy, doc, updateDoc, deleteDoc } from "firebase/firestore";
 import { db } from './firebaseConfig'; // Ya no importamos 'storage'
@@ -135,7 +135,7 @@ function App() {
     <Router>
       <div>
         <nav className="navbar">
-          <Link to="/">Inmobiliaria React</Link>
+          <Link to="/">Registros</Link>
           <div className="nav-links">
             <Link to="/">Inicio</Link>
             <Link to="/admin">Panel de Admin</Link>
