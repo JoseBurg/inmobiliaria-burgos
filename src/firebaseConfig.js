@@ -1,10 +1,9 @@
-// src/firebaseConfig.js
-
+// Import the functions you need from the SDKs you need
 import { initializeApp } from "firebase/app";
-import { getFirestore } from "firebase/firestore";
-import { getStorage } from "firebase/storage";
+// TODO: Add SDKs for Firebase products that you want to use
+// https://firebase.google.com/docs/web/setup#available-libraries
 
-// Tu configuración web de Firebase para esta aplicación
+// Your web app's Firebase configuration
 const firebaseConfig = {
   apiKey: "AIzaSyBQGh6HGKLr51JSu6PMLRhg-1_tzhxRM2U",
   authDomain: "inmobiliaria-4b5bc.firebaseapp.com",
@@ -14,9 +13,5 @@ const firebaseConfig = {
   appId: "1:801864925213:web:9eca8ec1f2430a347b86f4"
 };
 
-// Inicializa Firebase
+// Initialize Firebase
 const app = initializeApp(firebaseConfig);
-
-// Exporta la instancia de la base de datos de Firestore
-export const db = getFirestore(app);
-export const storage = getStorage(app);
